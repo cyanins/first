@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test Page</title>
+        <script type="text/javascript" src="d3/d3.js"></script>
+
+<style type="text/css">
+		
+			div.bar {
+				display: inline-block;
+				width: 20px;
+				height: 75px;	/* Gets overriden by D3-assigned height below */
+				margin-right: 2px;
+				background-color: teal;
+			}
+		
+		</style>
+
+    </head>
+
+    <body>
+        <script type="text/javascript">
+
+	d3.json("olympicsData.json", function(data) {
+		var canvas = d3.select("body").append("svg")
+			.attr("width", 500)
+			.attr("height", 500)
+		canvas.selectAll("rect")
+			.data(data)
+			.enter()
+				.append("rect")
+				.attr("width", function (d) {return d.age*10})
+				.attr("height", 45)
+				.attr("y", function(d, i) {return i*50})
+				attr("fill", "blue")
+	})
+
+        </script>
+
+
+    </body>
+</html> 
+
+
+
+
